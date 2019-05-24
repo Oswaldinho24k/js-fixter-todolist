@@ -1,0 +1,21 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+}
+.main_section{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top:25px; 
+}
+.form_container{
+    padding: 10px;    
+}
+.form_container input{
+    width:300px;
+    margin-bottom: 10px;
+}
+.form_container button{
+    width:300px;
+}
