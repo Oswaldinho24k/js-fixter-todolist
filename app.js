@@ -26,16 +26,33 @@ let newTodo = {
 
 const showTodos=()=>{
     todosList.innerHTML = ''
-    todosArray.forEach((el, idx)=>{
-        const li = document.createElement('li')
-        li.innerText = el.task
+    todosArray.forEach((el, idx)=>{        
+        const li = document.createElement('li')           
+        const text = document.createElement('span')
+        const btn = document.createElement('button')
+        text.innerText = el.task
+        btn.innerText="X"
         //check if task is done
-        if(el.done)li.style.textDecoration = 'line-through'
+        if(el.done)text.style.textDecoration = 'line-through'
         // add click listener
-        li.addEventListener('click', (e)=>handleStatus(e, idx))
-        todosList.appendChild(li)    
+        text.addEventListener('click', (e)=>handleStatus(e, idx))
+        btn.addEventListener('click', (e)=>handleDelete(e, idx))
+        li.appendChild(btn)
+        li.appendChild(text)        
+        todosList.appendChild(li)  
     })
 }
+
+const handleDelete =(e, idx)=>{
+    todosArray.splice(idx, 1)
+    // const lis = document.querySelectorAll('li')
+    // todosList.removeChild(lis[idx])
+    showTodos()
+    
+}
+
+
+
 const handleStatus=(e, todoIdx)=>{    
     console.log(todosArray[todoIdx])
     if(todosArray[todoIdx].done===true){
